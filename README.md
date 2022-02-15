@@ -16,7 +16,7 @@ Web dedicada a la gestión y consulta de una liga de fútbol
 - Sanción: jugador, fecha inicio, fecha fin
 
 ## Integrantes del equipo de desarrollo:
- 1. ELEAZAR FRANCISCO LOPEZ SOSA; 
+ 1. ELEAZAR FRANCISCO LOPEZ SOSA 
 
 ## Tablero Trello
 https://trello.com/b/p4aGXsJA/laligadelbarrio
