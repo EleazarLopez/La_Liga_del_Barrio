@@ -10,7 +10,7 @@ Web dedicada a la gestión y consulta de una liga de fútbol
 
 ## ENTIDADES
 - Equipo: nombre, correo, teléfono, delegado
-- Jugador: nombr, dorsal, dni, equipo
+- Jugador: nombre, dorsal, dni, equipo
 - Temporada: nombre, ganador, equipos
 - Partido: equipo casa, equipo visitante, goles casa, goles visitante, tarjetas
 - Sanción: jugador, fecha inicio, fecha fin
