@@ -5,66 +5,83 @@
   		.tbl th { background-color: lightblue; text-align: center;}
 	</style>
 		<div class="container theme-showcase">		
-			<form class="form-horizontal" action="/equipos/editar" method="post">
-			  <div class="form-group">
-			    <label for="nombre" class="col-sm-2 control-label">Nombre del equipo: </label>
-			    <div class="col-sm-2">
-			      <input type="hidden" name="nombreviejo" value="{{equipo.nombre}}"/>
-			      <input type="text" class="form-control" value="{{equipo.nombre}}" name="nombre" required/>
-			      <input type="hidden" name="id" value="{{equipo.id}}"/>
-			      <input type="hidden" name="usuario" value="{{userName}}"/>
-			    </div>
-			  </div>
-			  <br><br>
-			  <div class="form-group">
-			    <label for="nombre" class="col-sm-2 control-label">Email de contacto: </label>
-			    <div class="col-sm-2">
-			      <input type="text" class="form-control" value="{{equipo.correo}}" name="correo" required/>
-			    </div>
-			  </div>
-			  <br><br>
-			  <div class="form-group">
-			    <label for="nombre" class="col-sm-2 control-label">Teléfono de contacto: </label>
-			    <div class="col-sm-2">
-			      <input type="text" class="form-control" value="{{equipo.telefono}}" name="telefono" required"/>
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <div class="col-sm-offset-2 col-sm-10">
-			      <input type="hidden" name="_csrf" value="{{token}}"/>
-			      <input type="submit" class="btn btn-success" value="Guardar"/>
-			      <a href="/" class="btn btn-danger">Cancelar</a>
-			    </div>
-			  </div>
-			</form>	  
-	    </div><!-- /.container -->
-	    
-	    <br><br>
-	    
-	    <div class="container theme-showcase">
-				<label for="nombre" class="col-sm-2 control-label">Jugadores inscritos: </label>
-				<div class="form-group">
-					<table class="tbl" style="width:300px;">
-						<tr>
-							<th>Nombre del jugador</th>
-							<th>Dorsal</th>
-							<th>DNI</th>
-							<th>Gestionar</th>
-							{{#jugadores}}
-								<tr>
-									<td><a href="/jugador/editar/{{id}}">{{nombre}}</a></td>
-			    					<td>{{dorsal}}</td>
-			    					<td>{{dni}}</td>
-			    					<td><a href="/jugador/delete/{{id}}"><span class="btn btn-danger">Borrar</span></a></td>
-			  					</tr>
-		  					{{/jugadores}}
-		  				</tr>
-					</table>
-					<br>
+			{{#existe}}
+				<form class="form-horizontal" action="/equipos/editar" method="post">
+				
+				  <div class="form-group">
+				    <label for="nombre" class="col-sm-2 control-label">Nombre del equipo: </label>
+				    <div class="col-sm-2">
+				      <input type="hidden" name="nombreviejo" value="{{equipo.nombre}}"/>
+				      <input type="text" class="form-control" value="{{equipo.nombre}}" name="nombre" required/>
+				      <input type="hidden" name="id" value="{{equipo.id}}"/>
+				      <input type="hidden" name="usuario" value="{{userName}}"/>
+				    </div>
+				  </div>
+				  
+				  <br><br>
+				  
+				  <div class="form-group">
+				    <label for="nombre" class="col-sm-2 control-label">Email de contacto: </label>
+				    <div class="col-sm-2">
+				      <input type="text" class="form-control" value="{{equipo.correo}}" name="correo" required/>
+				    </div>
+				  </div>
+				  
+				  <br><br>
+				  
+				  <div class="form-group">
+				    <label for="nombre" class="col-sm-2 control-label">Teléfono de contacto: </label>
+				    <div class="col-sm-2">
+				      <input type="text" class="form-control" value="{{equipo.telefono}}" name="telefono" required"/>
+				    </div>
+				  </div>
+				  
+				  <div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <input type="hidden" name="_csrf" value="{{token}}"/>
+				      <input type="submit" class="btn btn-success" value="Guardar"/>
+				      <a href="/" class="btn btn-danger">Cancelar</a>
+				    </div>
+				  </div>
+				  
+				</form>	  
+				
+		    </div><!-- /.container -->
+		    
+		    <br><br>
+		    
+		    <div class="container theme-showcase">
+					<label for="jugadores" class="col-sm-2 control-label">Jugadores inscritos: </label>
 					<div class="form-group">
-						<a href="/jugador/nuevo/{{equipo.nombre}}" class="btn btn-success col-sm-offset-2 col-sm-2"><span class="glyphicon glyphicon-plus"></span> Añadir jugador</a>
+						<table class="tbl" style="width:300px;">
+							<tr>
+								<th>Nombre del jugador</th>
+								<th>Dorsal</th>
+								<th>DNI</th>
+								<th>Gestionar</th>
+								{{#jugadores}}
+									<tr>
+										<td><a href="/jugador/editar/{{id}}">{{nombre}}</a></td>
+				    					<td>{{dorsal}}</td>
+				    					<td>{{dni}}</td>
+				    					<td><a href="/jugador/delete/{{id}}"><span class="btn btn-danger">Borrar</span></a></td>
+				  					</tr>
+			  					{{/jugadores}}
+			  				</tr>
+						</table>
+						<br>
+						<div class="form-group">
+							{{^jugadores}}
+			  					<h3>No hay jugadores inscritos en este equipo.</h3>	
+			  				{{/jugadores}}
+			  				<br>
+							<a href="/jugador/nuevo/{{equipo.nombre}}" class="btn btn-success col-sm-offset-2 col-sm-2"><span class="glyphicon glyphicon-plus"></span> Añadir jugador</a>
+						</div>
 					</div>
-				</div>
+			{{/existe}}
+			{{^existe}}
+				<h2>Edición rechazada. No existe ningún equipo llamado "{{nombre}}".</h2>
+			{{/existe}}
 		</div><!-- /.container -->
 
 {{/layout}}

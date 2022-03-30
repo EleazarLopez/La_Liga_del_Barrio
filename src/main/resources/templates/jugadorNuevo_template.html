@@ -1,21 +1,24 @@
 {{#layout}}
 		<div class="container theme-showcase">
-		{{#equipo}}		
+		{{#existe}}		
 			<form class="form-horizontal" action="/jugador/nuevo" method="post">
+			
 			  <div class="form-group">
 			    <label for="nombre" class="col-sm-4 control-label"><h3>Nuevo jugador para el equipo</h3></label>
-			    <label for="nombre" class="col-sm-1 control-label text-danger"><h3>{{equipo.nombre}}</h3></label>
-			    <input type="hidden" name="nombredeequipo" value="{{equipo.nombre}}"/>
+			    <label for="nombre" class="col-sm-1 control-label text-danger"><h3>{{nombre}}</h3></label>
+			    <input type="hidden" name="nombredeequipo" value="{{nombre}}"/>
 			  </div>
+			  
 			  <br><br>
 			  
 			  <div class="form-group">
-			    <label for="dorsal" class="col-sm-2 control-label">Nombre: </label>
+			    <label for="nombre" class="col-sm-2 control-label">Nombre: </label>
 			    <div class="col-sm-2">
 			      <input type="hidden" name="usuario" value="{{userName}}"/>
 			      <input type="text" class="form-control" placeholder="nombre" name="nombre" id="nombre" required/>
 			    </div>
 			  </div>
+			  
 			  <br><br>
 			  
 			  <div class="form-group">
@@ -24,25 +27,30 @@
 			      <input type="text" class="form-control" placeholder="dorsal" name="dorsal" id="dorsal" required/>
 			    </div>
 			  </div>
+			  
 			  <br><br>
+			  
 			  <div class="form-group">
 			    <label for="dni" class="col-sm-2 control-label">DNI: </label>
 			    <div class="col-sm-2">
 			      <input type="text" class="form-control" placeholder="dni" name="dni" id="dni" required/>
 			    </div>
 			  </div>
+			  
 			  <br><br>
+			  
 			  <div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
 			      <input type="hidden" name="_csrf" value="{{token}}"/>
 			      <input type="submit" class="btn btn-success" value="Guardar"/>
-			      <a href="/equipos/editar/{{equipo.nombre}}" class="btn btn-danger">Cancelar</a>
+			      <a href="/equipos/editar/{{nombre}}" class="btn btn-danger">Cancelar</a>
 			    </div>
 			  </div>
+			  
 			</form>
-		{{/equipo}}
-		{{^equipo}}
+		{{/existe}}
+		{{^existe}}
 			<h3>No se puede crear un jugador para un equipo que no existe.</h3>
-		{{/equipo}}
+		{{/existe}}
 	    </div><!-- /.container -->
 {{/layout}}
