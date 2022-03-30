@@ -76,8 +76,13 @@ public class RegistroController {
 		Optional <User> user = userRepository.findByName(nombre);
 		if(user.isPresent()) { // Falta comprobar si el usuario que intenta editar es el dueño de la cuenta
 			model.addAttribute(user.get());
-			model.addAttribute("nombreequipo",user.get().getEquipo().getNombre());
-			model.addAttribute("equipo",user.get().getEquipo());
+			if(user.get().getEquipo()!=null) {
+				model.addAttribute("nombreequipo",user.get().getEquipo().getNombre());
+				model.addAttribute("equipo",user.get().getEquipo());
+				model.addAttribute("tiene",true);
+			}else {
+				model.addAttribute("tiene",false);
+			}
 			return "cuenta_template";
 		}else {
 			model.addAttribute("compruebauser",false);
