@@ -40,7 +40,7 @@ public class JugadorController{
 			model.addAttribute("logged",true);
 			model.addAttribute("userName",principal.getName());
 			model.addAttribute("delegado",request.isUserInRole("DELEGADO"));
-			//model.addAttribute("equipo",UserRepository.findByName(principal.getName()).get().getEquipo());
+			model.addAttribute("equipo",UserRepository.findByName(principal.getName()).get().getEquipo());
 		}else {
 			model.addAttribute("logged",false);
 		}
@@ -78,8 +78,11 @@ public class JugadorController{
 	public String jugadorNuevo(Model model, @PathVariable String equipo) {
 		Optional <Equipo> revisar = EquipoRepository.findByNombre(equipo);
 		if(revisar.isPresent()) {
-			model.addAttribute("equipo",revisar.get());
+			model.addAttribute("existe",true);
+		}else {
+			model.addAttribute("existe",false);
 		}
+		model.addAttribute("nombre",equipo);
 		return "jugadorNuevo_template";
 	}
 	
