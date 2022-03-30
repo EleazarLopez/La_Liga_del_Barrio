@@ -1,0 +1,32 @@
+{{#layout}}
+	<style>
+  		.tbl { border-collapse: collapse; text-align: center; }
+  		.tbl th, .tbl td { padding: 5px; border: solid 1px #777; text-align: center;}
+  		.tbl th { background-color: lightblue; text-align: center;}
+	</style>
+
+    <div class="container theme-showcase">
+	    
+    	<div class="page-header">
+	    	<h1>Usuarios registrados</h1>
+	    </div>
+	    <div class="container theme-showcase">
+			<table class="tbl" style="width:700px;">
+				<tr>
+					<th>Nombre de usuario</th>
+					<th>Roles</th>
+					<th>Convertir en delegado</th>
+					<th>Eliminar</th>
+					{{#usuarios}}
+	  					<tr>
+	    					<td>{{name}}</a></td>
+	    					<td>{{roles}}</td>
+	    					<td><a href="/cuentas/rolup/{{name}}"><span class="btn btn-success">Ejecutar</span></a></td>
+	    					<td><a href="/cuentas/eliminar/{{name}}"><span class="btn btn-danger">Ejecutar</span></a></td>
+	  					</tr>
+	  				{{/usuarios}}
+				</table>
+		</div>
+    </div><!-- /.container -->
+    
+{{/layout}}

@@ -1,0 +1,22 @@
+{{#layout}}
+    
+    <div class="container theme-showcase">
+	   {{#existe}}
+	   		{{#denegado}}
+	   			<h2>Edición rechazada. Solo el delegado del equipo de un jugador puede editar la información de ese jugador".</h2>
+	   		{{/denegado}}
+	   		{{^denegado}}
+		    	{{#disponible}}
+		    		<h2>Jugador editado correctamente".</h2>
+		   		{{/disponible}}
+		   		{{^disponible}}
+		    		<h2>El jugador no se ha podido editar porque ya existe un jugador con el DNI "{{jugador.dni}}".</h2>
+		   		{{/disponible}}
+		   	{{/denegado}}
+	  {{/existe}}
+	  {{^existe}}
+	  	<h2>El jugador "{{jugador.nombre}}" con DNI "{{jugador.dni}}" no existe y no se puede editar.</h2>
+	  {{/existe}}
+	  <a href="/equipos/editar/{{equipo.nombre}}" class="btn btn-info">Volver a mi equipo</a>
+    </div><!-- /.container -->
+{{/layout}}

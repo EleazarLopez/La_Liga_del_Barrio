@@ -1,0 +1,23 @@
+{{#layout}}
+	<div class="container theme-showcase">
+   				
+		<form class="form-horizontal" action="/torneos/nuevo" method="post">
+		  <div class="form-group">
+		    <label for="nombre" class="col-sm-2 control-label">Nombre del torneo: </label>
+		    <div class="col-sm-2">
+		      <input type="text" class="form-control" placeholder="nombre" name="nombre" id="nombre" required/>
+		      <input type="hidden" name="ganador" value="Por decidir"/>
+		    </div>
+		  </div>
+		  <br><br>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <input type="hidden" name="_csrf" value="{{token}}"/>
+		      <input type="submit" class="btn btn-success" value="Guardar"/>
+		      <a href="/torneos" class="btn btn-danger">Cancelar</a>
+		    </div>
+		  </div>
+		</form>
+		
+    </div><!-- /.container -->
+{{/layout}}

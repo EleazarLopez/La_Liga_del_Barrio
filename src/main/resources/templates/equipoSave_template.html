@@ -1,0 +1,19 @@
+{{#layout}}
+
+    <div class="container theme-showcase">
+	   {{#dele}}
+	   	{{#tiene}}
+	   		<h2>El delegado ya es propietario de un equipo.</h2>
+	   	{{/tiene}}
+	   	{{^tiene}}
+	   		{{^disponible}}
+	   			<h2>El nombre de equipo elegido ya está en uso.</h2>
+	   		{{/disponible}}
+	   	{{/tiene}}
+	  {{/dele}}
+	  {{^dele}}
+	  	<h2>El usuario para el que se quiere crear el equipo no es un delegado o no es un usuario registrado.</h2>
+	  {{/dele}}
+       
+    </div><!-- /.container -->
+{{/layout}}

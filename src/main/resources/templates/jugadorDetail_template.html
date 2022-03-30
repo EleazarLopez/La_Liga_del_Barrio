@@ -1,0 +1,45 @@
+{{#layout}}
+	<style>
+  		.tbl { border-collapse: collapse; text-align: center; }
+  		.tbl th, .tbl td { padding: 5px; border: solid 1px #777; text-align: center;}
+  		.tbl th { background-color: lightblue; text-align: center;}
+	</style>
+		<div class="container theme-showcase">
+			  <div class="form-group">
+			  	<h3>Información del jugador</h3>
+			  </div>
+			<br>
+			  <div class="form-group">
+			    <label for="nombre" class="col-sm-1 control-label">Nombre: </label>
+			    <div class="col-sm-2">
+			    <label for="nombre" class="col-sm-1 control-label">{{jugador.nombre}}</label>
+			    </div>
+			  </div>
+			  
+			  <br><br>
+			  
+			  <div class="form-group">
+			    <label for="dorsal" class="col-sm-1 control-label">Dorsal: </label>
+			    <div class="col-sm-2">
+			    <label for="dorsal" class="col-sm-1  control-label">{{jugador.dorsal}}</label>
+			    </div>
+			  </div>
+			  
+			  <br><br>
+			  
+			  <div class="form-group">
+			    <label for="equipo" class="col-sm-1 control-label">Equipo: </label>
+			    <div class="col-sm-2">
+			       <label for="equipo" class="col-sm-1 control-label">{{equipo.nombre}}</label>
+			    </div>
+			  </div>
+
+	    	  <br><br>
+	    
+	    	 
+			<div class="form-group">
+				<a href="/equipos/{{equipo.nombre}}" class="btn btn-success col-sm-2"><span class="glyphicon glyphicon-info"></span>Volver al equipo</a>
+			</div>
+	  </div><!-- /.container -->
+
+{{/layout}}

@@ -1,0 +1,15 @@
+{{#layout}}
+
+    <div class="container theme-showcase">
+	    
+		<div class="page-header">
+	    	<h2>{{nombre}}</h2>
+	    </div>
+		<ul class="list-group">
+		{{#jugadores}}
+			<li class="list-group-item"><a href="/jugador/detail/{{jugadores.nombre}}">{{nombre}}</a></li>
+		{{/jugadores}}
+		</ul>
+
+    </div><!-- /.container -->
+{{/layout}}

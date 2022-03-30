@@ -1,0 +1,57 @@
+{{#layout}}
+	<style>
+  		.tbl { border-collapse: collapse; text-align: center; }
+  		.tbl th, .tbl td { padding: 5px; border: solid 1px #777; text-align: center;}
+  		.tbl th { background-color: lightblue; text-align: center;}
+	</style>
+		<div class="container theme-showcase">		
+			  <div class="form-group">
+			    <label for="nombre" class="col-sm-2 control-label">Nombre del equipo: </label>
+			    <div class="col-sm-2">
+			    <label for="nombre" class="col-sm-2 control-label">{{equipo.nombre}}</label>
+			    </div>
+			  </div>
+			  
+			  <br><br>
+			  
+			  <div class="form-group">
+			    <label for="email" class="col-sm-2 control-label">Email de contacto: </label>
+			    <div class="col-sm-2">
+			    <label for="email" class="col-sm-2 control-label">{{equipo.correo}}</label>
+			    </div>
+			  </div>
+			  
+			  <br><br>
+			  
+			  <div class="form-group">
+			    <label for="telefono" class="col-sm-2 control-label">Teléfono de contacto: </label>
+			    <div class="col-sm-2">
+			       <label for="telefono" class="col-sm-2 control-label">{{equipo.telefono}}</label>
+			    </div>
+			  </div>
+
+	    	  <br><br>
+	    
+	    	 <div class="form-group">
+				<label for="jugadores" class="col-sm-2 control-label">Jugadores:</label>
+				<div class="form-group">
+					<table class="tbl" style="width:300px;">
+						<tr>
+							<th>Nombre del jugador</th>
+							<th>Dorsal</th>
+							{{#jugadores}}
+								<tr>
+									<td><a href="/jugador/{{nombre}}">{{nombre}}</a></td>
+			    					<td>{{dorsal}}</td>
+			  					</tr>
+		  					{{/jugadores}}
+		  				</tr>
+					</table>
+					<br>
+					<div class="form-group">
+						<a href="/torneos" class="btn btn-success col-sm-offset-2 col-sm-2"><span class="glyphicon glyphicon-info"></span>Volver a torneos</a>
+					</div>
+				</div>
+		</div><!-- /.container -->
+
+{{/layout}}

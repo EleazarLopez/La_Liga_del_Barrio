@@ -1,0 +1,17 @@
+{{#layout}}
+
+    <div class="container theme-showcase">
+       {{#juega}}
+       		<h2>El equipo {{nombre}} está inscrito en algún torneo y no puede ser borrado.</h2>
+       {{/juega}}
+       {{^juega}}
+	   		{{#borrado}}
+	   	 		<h2>El equipo {{nombre}} ha sido borrado correctamente.</h2>
+	    		<a href="/equipos">Volver a equipos</a> 
+	   		{{/borrado}}
+	   		{{^borrado}}
+	   			<h2>El equipo que se intenta borrar no existe.</h2>
+	   		{{/borrado}}
+	   	{{/juega}}
+    </div><!-- /.container -->
+{{/layout}}

@@ -1,0 +1,14 @@
+{{#layout}}
+    
+    <div class="container theme-showcase">
+	   
+	    {{#disponible}}
+	    	<h2>El torneo "{{nombre}}" ha sido creado correctamente.</h2>
+	   {{/disponible}}
+	   {{^disponible}}
+	    	<h2>El nombre de torneo "{{nombre}}" ya está en uso y no se ha podido crear. Por favor, pulse <a href="/torneos/nuevo">aquí</a> para elegir otro.</h2>
+	   {{/disponible}}
+	   <br>
+		<a href="/torneos" class="btn btn-info">Volver a torneos</a>
+    </div><!-- /.container -->
+{{/layout}}

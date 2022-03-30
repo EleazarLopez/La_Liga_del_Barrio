@@ -1,0 +1,14 @@
+{{#layout}}
+    
+    <div class="container theme-showcase">
+	   
+	    {{#equiposok}}
+	    	<h2>El partido se ha sido modificado correctamente.</h2>
+	   {{/equiposok}}
+	   {{^equiposok}}
+	    	<h2>El partido no se ha podido modificar porque el equipo local es igual al visitante. Por favor, pulse <a href="/partido/editar/{{partido.id}}">aquí</a> para elegir otros.</h2>
+	   {{/equiposok}}
+	   <br>
+		<a href="/torneos/{{torneo.nombre}}" class="btn btn-info">Volver al torneo</a>
+    </div><!-- /.container -->
+{{/layout}}

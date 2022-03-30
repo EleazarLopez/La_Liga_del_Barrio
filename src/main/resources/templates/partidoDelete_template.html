@@ -1,0 +1,14 @@
+{{#layout}}
+    
+    <div class="container theme-showcase">
+	   
+	    {{#borrado}}
+	    	<h2>El partido ha sido borrado correctamente.</h2>
+	   {{/borrado}}
+	   {{^borrado}}
+	    	<h2>El partido no se ha podido borrar.</h2>
+	   {{/borrado}}
+	   <br>
+		<a href="/torneos">Volver a torneos</a>
+    </div><!-- /.container -->
+{{/layout}}

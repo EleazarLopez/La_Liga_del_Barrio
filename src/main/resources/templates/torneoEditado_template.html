@@ -1,0 +1,13 @@
+{{#layout}}
+    
+    <div class="container theme-showcase">
+	   
+	    {{#disponible}}
+	    	<h2>Torneo editado correctamente.</h2>
+	   {{/disponible}}
+	   {{^disponible}}
+	    	<h2>El torneo no se ha podido editar porque ya existe un torneo llamado "{{nombre}}".</h2>
+	   {{/disponible}}
+		<a href="/torneos" class="btn btn-info">Volver a torneos</a>
+    </div><!-- /.container -->
+{{/layout}}

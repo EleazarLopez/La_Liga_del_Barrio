@@ -1,0 +1,23 @@
+{{#layout}}
+    
+    <div class="container theme-showcase">
+   {{#compruebauser}}
+	   {{#contraseñaactual}}
+			{{#contraseñanueva}}
+	    		<h2>Los datos del usuario "{{nombre}}" han sido actualizados.</h2>		
+			{{/contraseñanueva}}
+			{{^contraseñanueva}}
+				<h2> La nueva contraseña no coincide con la verificada. No se han registrado los cambios.</h2>
+				<a href="/cuenta/{{nombre}}">Volver a intentarlo</a>
+			{{/contraseñanueva}}
+		{{/contraseñaactual}}
+		{{^contraseñaactual}}
+			<h2>La contraseña actual de usuario no coincide. No se han registrado los cambios.</h2>	
+		{{/contraseñaactual}}
+	{{/compruebauser}}
+	{{^compruebauser}}
+		<h2>Acceso restringido. El usuario que se quiere editar no existe o pertenece a otro usuario.</h2>
+	{{/compruebauser}}
+    </div><!-- /.container -->
+
+{{/layout}}

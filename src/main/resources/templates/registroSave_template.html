@@ -1,0 +1,12 @@
+{{#layout}}
+    
+<div class="container theme-showcase">
+	   {{#disponible}}
+	    <h2>El usuario "{{nombre}}" ha sido registrado correctamente. Pulse <a href="/login">aquí</a> para hacer acceder.</h2>
+	   {{/disponible}}
+	   {{^disponible}}
+	    <h2>El nombre de usuario "{{nombre}}" ya está en uso y no se ha podido registrar. Por favor, pulse <a href="/registro">aquí</a> para elegir otro.</h2>
+	   {{/disponible}}
+    </div><!-- /.container -->
+
+{{/layout}}

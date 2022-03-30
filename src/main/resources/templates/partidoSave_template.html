@@ -1,0 +1,17 @@
+{{#layout}}
+    
+    <div class="container theme-showcase">
+	   {{#equiposok}}
+	   		<h2>El partido del torneo {{torneo}} entre el equipo "{{equipo1}}" como local y el equipo "{{equipo2}}" como visitante ha sido creado correctamente.</h2>
+	   		<br>
+	   		<h2>Por favor, pulse <a href="/partido/nuevo/{{torneo}}">aquí</a> si quiere crear otro partido.</h2>
+	   {{/equiposok}}
+	   {{^equiposok}}
+	   		<h2>Se ha elegido el mismo equipo como local y visitante. No se ha podido crear el partido.</h2>
+	   		<br>
+	   		<h2>Por favor, pulse <a href="/partido/nuevo/{{torneo}}">aquí</a> para volver a intentarlo.</h2>
+	   {{/equiposok}}
+	   <br>
+		<a href="/torneos/{{torneo}}" class="btn btn-info">Volver al torneo</a>
+    </div><!-- /.container -->
+{{/layout}}

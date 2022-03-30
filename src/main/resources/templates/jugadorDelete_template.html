@@ -1,0 +1,19 @@
+{{#layout}}
+    
+    <div class="container theme-showcase">
+	   {{#existe}}
+	    	{{#borrado}}
+	    		<h2>El jugador "{{jugador.nombre}}", con dorsal "{{jugador.dorsal}}" y DNI "{{jugador.dni}}" ha sido borrado correctamente.</h2>
+	   		{{/borrado}}
+	   		{{^borrado}}
+	    		<h2>El jugador "{{jugador.nombre}}", con dorsal "{{jugador.dorsal}}" y DNI "{{jugador.dni}}" no se ha podido borrar.</h2>
+	   		{{/borrado}}
+	   		<br>
+			<a href="/equipos/editar/{{equipo.nombre}}">Volver a tu equipo</a>
+	   	{{/existe}}
+	   	{{^existe}}
+	   		<h2>Error. No se puede borrar un jugador que no esté dado de alta en algún equipo.</h2>
+	   	{{/existe}}
+	   	
+    </div><!-- /.container -->
+{{/layout}}

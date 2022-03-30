@@ -1,0 +1,19 @@
+{{#layout}}
+    
+    <div class="container theme-showcase">
+	   {{#denegado}}
+	   	 <h2>Edición rechazada. El usuario que pretende editar el equipo no es el propietario del mismo.</h2>
+	   {{/denegado}}
+	   {{^denegado}}
+	    {{#disponible}}
+	    	<h2>Equipo editado correctamente.</h2>
+	    	<a href="/equipos/editar/{{nombre}}" class="btn btn-info">Volver a editar mi equipo</a>
+	   {{/disponible}}
+	   {{^disponible}}
+	    	<h2>El equipo no se ha podido editar porque ya existe un equipo llamado "{{nombre}}" o no se puede usar ese nombre de equipo.</h2>
+	    	<a href="/equipos/editar/{{nombreviejo}}" class="btn btn-info">Volver a editar mi equipo</a>
+	   {{/disponible}}
+	   {{/denegado}}
+	   
+    </div><!-- /.container -->
+{{/layout}}

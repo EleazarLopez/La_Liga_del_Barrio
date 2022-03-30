@@ -1,0 +1,78 @@
+{{#layout}}
+	<div class="container theme-showcase">
+   		{{#existe}}		
+			<form class="form-horizontal" action="/partido/nuevo" method="post">
+			  <div class="form-group">
+			    <label for="torneo" class="col-sm-3 control-label">Nuevo partido para el torneo: </label>
+			    <div class="col-sm-offset-3">
+			      <label for="torneo" class="control-label text-danger">{{torneo.nombre}}</label>
+			      <input type="hidden" name="nombretorneo" value="{{torneo.nombre}}"/>
+			    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="fecha" class="col-sm-3 control-label">Fecha: </label>
+			    <div class="col-sm-offset-3">
+					<input name="fecha" style="width: 200px" class="form-control" id="fecha" required/>
+			    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="hora" class="col-sm-3 control-label">Hora: </label>
+			    <div class="col-sm-offset-3">
+					<input name="hora" style="width: 200px" class="form-control" id="hora" required/>
+			    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="equipo1" class="col-sm-3 control-label">Equipo1: </label>
+			    <div class="col-sm-offset-3">
+					<input list="equipos" name="equipolocal" required>
+					<datalist id="equipos">
+					{{#equipos}}
+	  					<option value="{{nombre}}">
+	  				{{/equipos}}
+					</datalist>
+			    </div>
+			  </div>
+			  
+			   <div class="form-group">
+			    <label for="equipo2" class="col-sm-3 control-label">Equipo2: </label>
+			    <div class="col-sm-offset-3">
+					<input list="equipos" name="equipovisitante" required>
+					<datalist id="equipos">
+					{{#equipos}}
+	  					<option value="{{nombre}}">
+	  				{{/equipos}}
+					</datalist>
+			    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="golesE1" class="col-sm-3 control-label">Goles Equipo1: </label>
+			    <div class="col-sm-offset-3">
+					<input name="golesE1" style="width: 200px" class="form-control" id="golesE1"/>
+			    </div>
+			  </div>
+			  
+			   <div class="form-group">
+			    <label for="golesE2" class="col-sm-3 control-label">Goles Equipo2: </label>
+			    <div class="col-sm-offset-3">
+					<input name="golesE2" style="width: 200px" class="form-control" id="golesE2"/>
+			    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <div class="col-sm-offset-3">
+			      <input type="hidden" name="_csrf" value="{{token}}"/>
+			      <input type="submit" class="btn btn-success" value="Guardar"/>
+			      <a href="/torneos/{{torneo.nombre}}" class="btn btn-danger">Cancelar</a>
+			    </div>
+			  </div>
+			</form>
+		{{/existe}}
+		{{^existe}}
+			<h2>No se puede crear un partido para un torneo que no existe.</h2>
+		{{/existe}}
+    </div><!-- /.container -->
+{{/layout}}

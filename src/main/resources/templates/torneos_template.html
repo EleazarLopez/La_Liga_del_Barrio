@@ -1,0 +1,57 @@
+{{#layout}}
+	<style>
+  		.tbl { border-collapse: collapse; text-align: center; }
+  		.tbl th, .tbl td { padding: 5px; border: solid 1px #777; text-align: center;}
+  		.tbl th { background-color: lightblue; text-align: center;}
+	</style>
+
+    <div class="container theme-showcase">
+	    
+    	<div class="page-header">
+	    	<h1>Torneos en curso</h1>
+	    </div>
+	    <div class="container theme-showcase">
+	    	
+				<table class="tbl" style="width:300px;">
+					<tr>
+						<th>Nombre del torneo</th>
+						<th>Ganador</th>
+						{{#admin}}
+							<th>Gestionar</th>
+						{{/admin}}
+						{{#torneos}}
+						<tr>
+							<td><a href="/torneos/{{nombre}}">{{nombre}}</a></td>
+							{{#ganador}}
+	    						<td><a href="/equipos/{{ganador}}">{{ganador}}</td>
+	    					{{/ganador}}
+	    					{{^ganador}}
+	    						<td>Por decidir</td>
+	    					{{/ganador}}
+						{{#admin}}
+	    					<td><a href="/torneos/delete/{{nombre}}"><span class="btn btn-danger">Borrar</span></a></td>
+	    				{{/admin}}
+	  					</tr>
+	  					{{/torneos}}
+	  				</tr>
+				</table>
+			
+			{{^torneos}}
+				<br>
+				<p>"Actualmente no se está disputando ningún torneo."</p>
+			{{/torneos}}
+		</div>
+    </div><!-- /.container -->
+    
+    <div class="container theme-showcase">
+	    {{#logged}}
+	    	{{#admin}}
+	    		<br>
+	    		<div class="container theme-showcase">
+	    			<input type="hidden" name="_csrf" value="{{token}}" />
+		    		<a href="/torneos/nuevo" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Crear torneo</a>
+		    	</div>
+	    	{{/admin}}
+	    {{/logged}}
+    </div><!-- /.container -->
+{{/layout}}
