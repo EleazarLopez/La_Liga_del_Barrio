@@ -2,6 +2,22 @@
 
 Web dedicada a la gestión y consulta de una liga de fútbol
 
+## Instrucciones de despliegue
+Descargar los ficheros en zip, descomprimir e importar a Eclipse como proyecto. El archivo XML contiene todas las dependencias necesarias. Versión java 1.8.
+El archivo application.properties está configurado con múltiples debuggers y con la base de datos "create-drop" para poder ejecutar el inicializador de base de datos que genera ejemplos y poder testear la aplicación. Además, contiene la configuración que debe tener la base de datos a la que se va a conectar (para pruebas).
+spring.datasource.username=admin
+spring.datasource.password=admin
+spring.datasource.url=jdbc:mysql://localhost/laligadelbarrio
+spring.jpa.hibernate.ddl-auto=create-drop
+server.port=8443
+server.ssl.key-store=classpath:keystore.jks
+server.ssl.key-store-password=password
+server.ssl.key-password=password
+
+También se incluye el fichero keystore con el certificado, pero como no está firmado por una CA, la web aparecerá como no segura.
+
+Una vez iniciada la aplicación, para usarla basta con poner en el navegador https://localhost:8443/. La seguridad está implementada con CSRF.
+
 ## Funcionalidades
 * __Pública__: En la parte pública se podrá consultar la información de los torneos en curso, los partidos de los torneos, los equipos inscritos en los torneo y los jugadores inscritos en los equipos.
 
