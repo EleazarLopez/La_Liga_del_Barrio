@@ -134,11 +134,12 @@ public class EquipoController{
 		if(equipo.isPresent()) {
 			model.addAttribute("equipo",EquipoRepository.findByNombre(nombre).get());
 			model.addAttribute("jugadores", EquipoRepository.findByNombre(nombre).get().getJugadores());
-			return "equipoEdit_template";
+			model.addAttribute("existe",true);
 		}else {
-			model.addAttribute("equipo",nombre);
-			return "equipoExist_template";
+			model.addAttribute("nombre",nombre);
+			model.addAttribute("existe",false);
 		}
+		return "equipoEdit_template";
 	}
 	
 	@PostMapping("/equipos/editar")
