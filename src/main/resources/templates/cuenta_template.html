@@ -8,7 +8,9 @@
 		    <div class="col-sm-3">
 		      <label for="nombreactual" class="col-sm-3 control-label text-danger"><b>{{user.name}}</b></label>
 		      <input type="hidden" name="name" value="{{user.name}}" />
-		      <input type="hidden" name="nombreequipo" value="{{nombreequipo}}" />
+		      {{#tiene}}
+		      	<input type="hidden" name="nombreequipo" value="{{nombreequipo}}" />
+		      {{/tiene}}
 		      <input type="hidden" name="id" value="{{user.id}}" />
 		    </div>
 		  </div>
