@@ -109,7 +109,7 @@ Solo un admin o el DELEGADO del equipo al que pertenece el jugador pueden editar
 
 ## Jugador_nuevo
 Solo un admin o un DELEGADO puede crear un nuevo jugador. No se permiten jugadores con idéntico DNI. El jugador creado será asignado al equipo para el que se va a crear. No se permite que un DELEGADO gestione jugadores de otro equipo que no sea el suyo.
-![Jugador_nuevo](https://user-images.githubusercontent.com/27709224/160926933-f7a251ac-4e59-4f94-b566-9756ed5df29d.png)
+![Jugador_nuevo](https://user-images.githubusercontent.com/27709224/160932575-58762dcc-1eb0-47a2-8963-80becd4e0e90.png)
 
 ## Jugador_delete
 Implícita en la vista de edición de equipo.
