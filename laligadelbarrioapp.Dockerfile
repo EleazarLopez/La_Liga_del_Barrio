@@ -5,7 +5,7 @@ FROM maven as builder
 WORKDIR /codigo
 
 #Traemos los archivos desde github que serán guardadose en el directorio de trabajo
-COPY ./La_Liga_del_Barrio /codigo/La_Liga_del_Barrio
+COPY . /codigo/La_Liga_del_Barrio
 
 #Compilamos la aplicacion evitando el testing para que no de error al generar el jar (ademas hay que  forzar situarse en la carpeta correcta)
 RUN mvn -f "$PWD/La_Liga_del_Barrio" package "-Dmaven.test.skip=true"
