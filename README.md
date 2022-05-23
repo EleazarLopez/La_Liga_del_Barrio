@@ -3,7 +3,10 @@
 Web dedicada a la gestión y consulta de una liga de fútbol
 
 ## Instrucciones de despliegue en DOCKER
-1 - En ubuntu, crear una carpeta. Por ejemplo, "mkdir LaLigaDelBarrio".
+1 - En ubuntu, crear una carpeta y situarse en ella
+
+   > mkdir LaLigaDelbarrio
+   > cd LaLigaDelBarrio
 
 2 - Descargar este repositorio:
 
