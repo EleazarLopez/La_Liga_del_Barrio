@@ -1,0 +1,68 @@
+version: "1.0"
+
+services:
+
+ laligadelbarriodb:
+  image: mysql
+  container_name: laligadelbarrio_DB
+  environment:
+   - MYSQL_ROOT_PASSWORD=pass
+   - MYSQL_USER=admin
+   - MYSQL_PASSWORD=admin
+   - MYSQL_DATABASE=laligadelbarrio
+  volumes:
+   - ./laligadelbarrio-persiste-db:/var/lib/mysql
+  networks:
+   - laligadelbarrio-db
+
+ laligadelbarrio-app-nodo-1:
+  image: eleazarls64/laligadelbarrioapp
+  container_name: laligadelbarrio_APP_nodo_1
+  networks:
+   - laligadelbarrio-app
+   - laligadelbarrio-db
+  depends_on:
+   - laligadelbarrio_DB
+
+ laligadelbarrio-app-nodo-2:
+  image: eleazarls64/laligadelbarrioapp
+  container_name: laligadelbarrio_APP_nodo_2
+  networks:
+   - laligadelbarrio-app
+   - laligadelbarrio-db
+  depends_on:
+   - laligadelbarrio-app-nodo-1
+
+ laligadelbarrio-app-nodo-3:
+  image: eleazarls64/laligadelbarrioapp
+  container_name: laligadelbarrio_APP_nodo_3
+  networks:
+   - laligadelbarrio-app
+   - laligadelbarrio-db
+  depends_on:
+   - laligadelbarrio-app-nodo-1
+
+ balanceadorapp:
+  image: haproxytech/haproxy-alpine:2.4
+  container_name: laligadelbarrio_balanceador_app
+  networks:
+   - laligadelbarrio-app
+  ports:
+   - "8443:443"
+   - "8404:8404"
+  depends_on:
+   - laligadelbarrio-app-nodo-1
+   - laligadelbarrio-app-nodo-2cd
+   - laligadelbarrio-app-nodo-3
+   - laligadelbarriodb
+  volumes:
+   - ./:/usr/local/etc/haproxy:ro
+
+networks:
+ laligadelbarrio-app:
+  driver: bridge
+ laligadelbarrio-db:
+  driver: bridge
+
+volumes:
+ laligadelbarrio-persiste-db:
