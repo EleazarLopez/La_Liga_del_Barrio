@@ -22,7 +22,7 @@ services:
    - laligadelbarrio-app
    - laligadelbarrio-db
   depends_on:
-   - laligadelbarrio_DB
+   - laligadelbarriodb
 
  laligadelbarrio-app-nodo-2:
   image: eleazarls64/laligadelbarrioapp
@@ -31,7 +31,7 @@ services:
    - laligadelbarrio-app
    - laligadelbarrio-db
   depends_on:
-   - laligadelbarrio-app-nodo-1
+   - laligadelbarriodb
 
  laligadelbarrio-app-nodo-3:
   image: eleazarls64/laligadelbarrioapp
@@ -40,7 +40,7 @@ services:
    - laligadelbarrio-app
    - laligadelbarrio-db
   depends_on:
-   - laligadelbarrio-app-nodo-1
+   - laligadelbarriodb
 
  balanceadorapp:
   image: haproxytech/haproxy-alpine:2.4
@@ -52,7 +52,7 @@ services:
    - "8404:8404"
   depends_on:
    - laligadelbarrio-app-nodo-1
-   - laligadelbarrio-app-nodo-2cd
+   - laligadelbarrio-app-nodo-2
    - laligadelbarrio-app-nodo-3
    - laligadelbarriodb
   volumes:
