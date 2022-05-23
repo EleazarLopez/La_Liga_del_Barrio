@@ -2,6 +2,17 @@
 
 Web dedicada a la gestión y consulta de una liga de fútbol
 
+## Instrucciones de despliegue en DOCKER
+1 - En ubuntu, crear una carpeta. Por ejemplo, "mkdir LaLigaDelBarrio".
+2 - Descargar este repositorio con "git clone https://github.com/EleazarLopez/La_Liga_del_Barrio"
+3 - Crear la imagen de la aplicación: 
+   > docker build -f laligadelbarrioapp.Dockerfile --no-cache -t eleazarls64/laligadelbarrioapp .
+5 Crear y arrancar la infraestructura: 
+   > docker compose up
+
+La configuracio de haproxy lleva cookie de sesion con roundrobin (se ve el balanceo al cambiar de navegador).
+La base de datos tiene persistencia de datos en host a traves de un volumen.
+
 ## Instrucciones de despliegue
 Descargar los ficheros en zip, descomprimir e importar a Eclipse como proyecto. El archivo XML contiene todas las dependencias necesarias. Versión java 1.8.
 El archivo application.properties está configurado con múltiples debuggers y con la base de datos "create-drop" para poder ejecutar el inicializador de base de datos que genera ejemplos y poder testear la aplicación. Además, contiene la configuración que debe tener la base de datos a la que se va a conectar (para pruebas).
