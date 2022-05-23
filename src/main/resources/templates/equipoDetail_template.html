@@ -4,6 +4,7 @@
   		.tbl th, .tbl td { padding: 5px; border: solid 1px #777; text-align: center;}
   		.tbl th { background-color: lightblue; text-align: center;}
 	</style>
+	{{#existe}}
 		<div class="container theme-showcase">		
 			  <div class="form-group">
 			    <label for="nombre" class="col-sm-2 control-label">Nombre del equipo: </label>
@@ -53,5 +54,11 @@
 					</div>
 				</div>
 		</div><!-- /.container -->
-
+	{{/existe}}
+	{{^existe}}
+		<div class="container theme-showcase">	
+			<h2>El equipo no existe.</h2>
+			<a href="/" col-sm-offset-2 col-sm-2"><span class="glyphicon glyphicon-info"></span>Volver</a>
+		</div>
+	{{/existe}}
 {{/layout}}

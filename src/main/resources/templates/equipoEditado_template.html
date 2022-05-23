@@ -1,19 +1,24 @@
 {{#layout}}
     
     <div class="container theme-showcase">
-	   {{#denegado}}
-	   	 <h2>Edición rechazada. El usuario que pretende editar el equipo no es el propietario del mismo.</h2>
-	   {{/denegado}}
-	   {{^denegado}}
-	    {{#disponible}}
-	    	<h2>Equipo editado correctamente.</h2>
-	    	<a href="/equipos/editar/{{nombre}}" class="btn btn-info">Volver a editar mi equipo</a>
-	   {{/disponible}}
-	   {{^disponible}}
-	    	<h2>El equipo no se ha podido editar porque ya existe un equipo llamado "{{nombre}}" o no se puede usar ese nombre de equipo.</h2>
-	    	<a href="/equipos/editar/{{nombreviejo}}" class="btn btn-info">Volver a editar mi equipo</a>
-	   {{/disponible}}
-	   {{/denegado}}
-	   
+    	{{#propietario}}
+		    {{#disponible}}
+		    	<h2>Equipo editado correctamente.</h2>
+		    	<a href="/equipos/editar" class="btn btn-info">Volver a editar mi equipo</a>
+		    {{/disponible}}
+			
+		    {{^disponible}}
+		    	<h2>El equipo no se ha podido editar por alguna de las siguientes razones:</h2>
+		    	<h3> - El nuevo nombre de equipo ya está en uso o no puede ser seleccionado.</h3>
+		    	<h3> - El nuevo nombre de equipo ya está en uso o no puede ser seleccionado.</h3>
+		    	<a href="/equipos/editar" class="btn btn-info">Volver a editar mi equipo</a>
+		    {{/disponible}}
+		{{/propietario}}
+		{{^propietario}}
+			<h2>El equipo no se ha podido editar por alguna de las siguientes razones:</h2>
+		    	<h3> - El usuario no es un usuario registrado.</h3>
+   				<h3> - El usuario no tiene rol de delegado.</h3>
+   				<h3> - El usuario no tiene equipo.</h3>
+	    {{/propietario}}
     </div><!-- /.container -->
 {{/layout}}

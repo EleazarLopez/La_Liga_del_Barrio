@@ -12,4 +12,5 @@ public interface TorneoRepository extends JpaRepository<Torneo,Long>{
 	
 	@Query("SELECT distinct t FROM Partido p JOIN p.torneo t "+"WHERE p.equipo1 = :equipo OR p.equipo2 = :team")
 	public List<Torneo> getTorneos(@Param("team")Equipo equipo);
+
 }

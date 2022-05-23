@@ -32,7 +32,7 @@
 				</form>
 			  </ul>
 	          <ul class="nav navbar-nav navbar-right">
-	          	<li><a href="/cuenta/{{userName}}"><span class="glyphicon glyphicon-user"> <b>{{userName}}</b></a></li>
+	          	<li><a href="/cuenta"><span class="glyphicon glyphicon-user"> <b>{{userName}}</b></a></li>
 	          </ul>
 			  {{#admin}}
           	  	<ul class="nav navbar-nav navbar-right">
@@ -42,12 +42,12 @@
           	  {{#delegado}}
           	  	{{#equipo}}
           	  		<ul class="nav navbar-nav navbar-right">
-	          			<li><a href="/equipos/editar/{{equipo.nombre}}"><b>Mi equipo</b></a></li>
+	          			<li><a href="/equipos/editar"><b>Mi equipo</b></a></li>
 	          		</ul>
 	          	{{/equipo}}
 	          	{{^equipo}}
 	          		<ul class="nav navbar-nav navbar-right">
-	          			<li><a href="/equipo/nuevo/{{userName}}"><b>Crear equipo</b></a></li>
+	          			<li><a href="/equipo/nuevo"><b>Crear equipo</b></a></li>
 	          		</ul>
 	          	{{/equipo}}
           	  {{/delegado}}

@@ -1,16 +1,28 @@
 {{#layout}}
     
     <div class="container theme-showcase">
-	   {{#equiposok}}
-	   		<h2>El partido del torneo {{torneo}} entre el equipo "{{equipo1}}" como local y el equipo "{{equipo2}}" como visitante ha sido creado correctamente.</h2>
-	   		<br>
-	   		<h2>Por favor, pulse <a href="/partido/nuevo/{{torneo}}">aquí</a> si quiere crear otro partido.</h2>
-	   {{/equiposok}}
-	   {{^equiposok}}
-	   		<h2>Se ha elegido el mismo equipo como local y visitante. No se ha podido crear el partido.</h2>
-	   		<br>
-	   		<h2>Por favor, pulse <a href="/partido/nuevo/{{torneo}}">aquí</a> para volver a intentarlo.</h2>
-	   {{/equiposok}}
+		{{#administrador}}
+			{{#existe}}
+			    {{#equiposok}}
+			    	<h2>El partido del torneo {{torneo}} entre el equipo "{{equipo1}}" como local y el equipo "{{equipo2}}" como visitante ha sido creado correctamente.</h2>
+			   		<br>
+			   		<h2>Por favor, pulse <a href="/partido/nuevo/{{torneo}}">aquí</a> si quiere crear otro partido.</h2>
+			    {{/equiposok}}
+			    {{^equiposok}}
+			   		<h2>Se ha elegido el mismo equipo como local y visitante. No se ha podido crear el partido.</h2>
+			   		<br>
+			   		<h2>Por favor, pulse <a href="/partido/nuevo/{{torneo}}">aquí</a> para volver a intentarlo.</h2>
+			    {{/equiposok}}
+			{{/existe}}
+			{{^existe}}
+				<h2>No se puede crear un partido para un torneo que no existe.</h2>
+				<a href="/torneos" class="btn btn-info col-sm-offset-1 col-sm-2">Volver</a>
+			{{/existe}}
+		{{/administrador}}
+		{{^administrador}}
+			<h2>Solo un administrador puede crear partidos.</h2>
+			<a href="/torneos" class="btn btn-info col-sm-offset-1 col-sm-2">Volver</a>
+		{{/administrador}}
 	   <br>
 		<a href="/torneos/{{torneo}}" class="btn btn-info">Volver al torneo</a>
     </div><!-- /.container -->

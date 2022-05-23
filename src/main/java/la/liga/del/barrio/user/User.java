@@ -8,10 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-
 import la.liga.del.barrio.equipo.Equipo;
-
-import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.FetchType;
 
@@ -27,7 +24,7 @@ public class User{
 	
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles = new ArrayList<String>();
-	@OneToOne(mappedBy="delegado",cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToOne(mappedBy="delegado", orphanRemoval=true)
 	private Equipo equipo;
 	
 	//Constructores

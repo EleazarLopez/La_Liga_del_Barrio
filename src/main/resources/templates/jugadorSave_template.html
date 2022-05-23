@@ -1,8 +1,10 @@
 {{#layout}}
-
     <div class="container theme-showcase">
 		{{#denegado}}
-			<h2>Creación denegada. El usuario actual no es el delegado del equipo para el que se pretende crear un jugador.</h2>
+			<h2>Creación denegada debido a alguna de las siguientes razones:</h2>
+			<h3> - El usuario no está logeado.</h3>
+			<h3> - El usuario no es un delegado.</h3>
+			<h3> - El usuario es delegado pero aún no ha creado un equipo.</h3>
 		{{/denegado}}
 		{{^denegado}}
 	   		{{#disponible}}
@@ -10,14 +12,14 @@
 	   			<br><br>
 	   			<div class="container theme-showcase">
 	   				<div class="form-group">
-	   					<a href="/jugador/nuevo/{equipo.nombre}" class="btn btn-success col-sm-offset-1 col-sm-2"><span class="glyphicon glyphicon-plus"></span> Añadir otro jugador</a>
-	   					<a href="/equipos/editar/{{equipo.nombre}}" class="btn btn-info col-sm-offset-1 col-sm-2">Volver al equipo</a>
+	   					<a href="/jugador/nuevo" class="btn btn-success col-sm-offset-1 col-sm-2"><span class="glyphicon glyphicon-plus"></span> Añadir otro jugador</a>
+	   					<a href="/equipos/editar" class="btn btn-info col-sm-offset-1 col-sm-2">Volver al equipo</a>
 	   				</div>	
 	   			</div>	
 	   		{{/disponible}}
 	   		{{^disponible}}
 	   			<h2>El DNI "{{jugador.dni}}" del jugador "{{jugador.nombre}}" ya está en uso. Por favor, selecciona otro.</h2>
-	   			<a href="/jugador/nuevo/{{equipo.nombre}}">Volver a intentarlo.</a>
+	   			<a href="/jugador/nuevo">Volver a intentarlo.</a>
 	   		{{/disponible}}
     	{{/denegado}}
     </div><!-- /.container -->

@@ -5,71 +5,88 @@
   		.tbl th, .tbl td { padding: 5px; border: solid 1px #777; text-align: center;}
   		.tbl th { background-color: lightblue; text-align: center;}
 	</style>
-
-    <div class="container theme-showcase">
-	    
-    	<div class="page-header">
-	    	<h1>{{nombre}}</h1>
-	    </div>
-	    <div class="form-group">
-    		<h3>EQUIPOS</h3>
-    		<br>
-			<table class="tbl" style="width:300px;">
-				<tr>
-					<th>Equipos</th>
-					{{#equipos}}
-  						<tr>
-    						<td><a href="/equipos/{{nombre}}">{{nombre}}</a></td>
-  						</tr>
-  					{{/equipos}}
-				</table>
-			{{^equipos}}
-				<br>
-				<p>Este torneo aún no tiene equipos inscritos.</p>
-			{{/equipos}}
-			{{^equipos}}
-				<br>
-				<p>Este torneo aún no tiene equipos inscritos.</p>
-			{{/equipos}}
-			
-			<br><br>
-			
-			<h3>PARTIDOS</h3>
-			{{#admin}}
-				<a href="/partido/nuevo/{{nombre}}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Crear partido</a>
-			{{/admin}}
-    		<br>
-    		<br>
-				{{#partidos}}
-				<table class="tbl" style="width:300px;">		
-					<tr>	
-						<th>Equipos</th>
-						{{#admin}}
-	  							<th><a href="/partido/editar/{{id}}" class="btn btn-warning">Editar</a></th>
-	  							<th><a href="/partido/delete/{{id}}" class="btn btn-danger">Borrar</a></th>
-	  					{{/admin}}
-	  					<tr>
-	    					<td><a href="/equipos/{{equipo1.nombre}}">{{equipo1.nombre}}</a> VS <a href="/equipos/{{equipo2.nombre}}">{{equipo2.nombre}}</a></td>
-	    					<td><a href="/partido/{{id}}">Ver detalles</a></td>
-	  					</tr>
-	  			</table>
-	  			<br>
-	  			{{/partidos}}
-		</div>
-    </div><!-- /.container -->
-    
-     <div class="container theme-showcase">
-	    {{#logged}}
-	    	{{#admin}}
+	{{#existe}}
+	    <div class="container theme-showcase">
+		    
+	    	<div class="page-header">
+		    	<h1>{{nombre}}</h1>
+		    </div>
+		    <div class="form-group">
+	    		<h3>EQUIPOS</h3>
 	    		<br>
-	    		<div class>
-	    			<a href="/torneos/editar/{{nombre}}" class="btn btn-warning">Editar torneo</a>
-	    			<a href="/torneos/delete/{{torneo.nombre}}" class="btn btn-danger">Borrar torneo</a>
-		    	</div>
-	    	{{/admin}}
-	    {{/logged}}
-	    <br>
-    	<a href="/torneos" class="btn btn-info">Volver a torneos</a>
-    </div><!-- /.container -->
+				<table class="tbl" style="width:300px;">
+					<tr>
+						<th>Equipos</th>
+						{{#equipos}}
+	  						<tr>
+	    						<td><a href="/equipos/{{nombre}}">{{nombre}}</a></td>
+	  						</tr>
+	  					{{/equipos}}
+					</table>
+				{{^equipos}}
+					<br>
+					<p>Este torneo aún no tiene equipos inscritos.</p>
+				{{/equipos}}
+				{{^equipos}}
+					<br>
+					<p>Este torneo aún no tiene equipos inscritos.</p>
+				{{/equipos}}
+				
+				<br><br>
+				
+				<h3>PARTIDOS</h3>
+				{{#admin}}
+					<a href="/partido/nuevo/{{nombre}}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Crear partido</a>
+				{{/admin}}
+	    		<br>
+	    		<br>
+					<table class="tbl" style="width:300px;">		
+						<tr>	
+							<th>Equipos</th>
+							<th>Detalles</th>
+							{{#admin}}
+		  						<th>Editar</th>
+		  						<th>Borrar</th>
+		  					{{/admin}}
+		  					{{#partidos}}
+			  					<tr>
+			  						
+			    					<td><a href="/equipos/{{equipo1.nombre}}">{{equipo1.nombre}}</a> VS <a href="/equipos/{{equipo2.nombre}}">{{equipo2.nombre}}</a></td>
+			    					<td><a href="/partido/{{id}}">Ver detalles</a></td>
+			    					{{#admin}}
+			    						<td><a href="/partido/editar/{{id}}" class="btn btn-warning">Editar</a></td>
+			  							<td><a href="/partido/delete/{{id}}" class="btn btn-danger">Borrar</a></td>
+			  						{{/admin}}
+			  					</tr>
+		  					{{/partidos}}
+		  			</table>
+		  			{{^partidos}}
+		  				<p></p>
+		  				<p>Aún no se han creado partidos para este torneo.</p>
+		  			{{/partidos}}
+		  			<br>
+			</div>
+	    </div><!-- /.container -->
+	    
+	     <div class="container theme-showcase">
+		    {{#logged}}
+		    	{{#admin}}
+		    		<br>
+		    		<div class>
+		    			<a href="/torneos/editar/{{nombre}}" class="btn btn-warning">Editar torneo</a>
+		    			<a href="/torneos/delete/{{torneo.nombre}}" class="btn btn-danger">Borrar torneo</a>
+			    	</div>
+		    	{{/admin}}
+		    {{/logged}}
+		    <br>
+	    	<a href="/torneos" class="btn btn-info">Volver a torneos</a>
+	    </div><!-- /.container -->
+	{{/existe}}
+	{{^existe}}
+		<div class="container theme-showcase">
+			<h2>El torneo no existe.</h2>
+			<a href="/torneos" class="btn btn-info">Volver a torneos</a>
+		</div>
+	{{/existe}}
     
 {{/layout}}

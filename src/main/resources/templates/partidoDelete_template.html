@@ -6,9 +6,9 @@
 	    	<h2>El partido ha sido borrado correctamente.</h2>
 	   {{/borrado}}
 	   {{^borrado}}
-	    	<h2>El partido no se ha podido borrar.</h2>
+	    	<h2>No se puede borrar un partido que no existe.</h2>
 	   {{/borrado}}
 	   <br>
-		<a href="/torneos">Volver a torneos</a>
+		<a href="/torneos/{{torneo.nombre}}">Volver al torneo</a>
     </div><!-- /.container -->
 {{/layout}}

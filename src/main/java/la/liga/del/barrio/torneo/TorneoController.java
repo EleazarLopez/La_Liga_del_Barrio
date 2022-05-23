@@ -1,6 +1,7 @@
 package la.liga.del.barrio.torneo;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import la.liga.del.barrio.equipo.EquipoRepository;
 import la.liga.del.barrio.user.UserRepository;
+import la.liga.del.barrio.partido.Partido;
 import la.liga.del.barrio.partido.PartidoRepository;
 
 @Controller
@@ -63,11 +65,11 @@ public class TorneoController{
 			model.addAttribute("torneo", torneo.get());
 			model.addAttribute("equipos",EquipoRepository.getEquipos(torneo.get()));
 			model.addAttribute("partidos",PartidoRepository.getPartidos(torneo.get()));
-			return "torneoDetail_template";
+			model.addAttribute("existe",true);
 		}else{ // si no, vuelve a torneos
-			return "torneos_template";
+			model.addAttribute("existe",false);
 		}	
-		
+		return "torneoDetail_template";
 	}
 	
 	//Añadir un torneo
@@ -101,7 +103,13 @@ public class TorneoController{
 		Optional <Torneo> torneo = TorneoRepository.findByNombre(nombre);
 		model.addAttribute(torneo.get().getNombre());
 		
-		if(torneo.isPresent()) {
+		if(torneo.isPresent()) { //Comprobamos si el torneo existe
+			if (PartidoRepository.getPartidos(torneo.get())!=null) { //Si el torneo tiene partidos, se borran los partidos
+				List<Partido> partidos = PartidoRepository.getPartidos(torneo.get());
+				for (Partido p : partidos) {
+					PartidoRepository.delete(p);
+				}
+			}
 			TorneoRepository.delete(torneo.get());
 			model.addAttribute("borrado",true);
 		}else {

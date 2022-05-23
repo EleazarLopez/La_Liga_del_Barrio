@@ -28,7 +28,7 @@
 		  <div class="form-group">
 		    <label for="equipo1" class="col-sm-3 control-label">Equipo1: </label>
 		    <div class="col-sm-offset-3">
-				<input list="equipos" name="equipolocal" required>
+				<input list="equipos" name="equipolocal" placeholder="{{equipo1.nombre}}" required>
 				<datalist id="equipos">
 				{{#equipos}}
   					<option value="{{nombre}}">
@@ -40,7 +40,7 @@
 		   <div class="form-group">
 		    <label for="equipo2" class="col-sm-3 control-label">Equipo2: </label>
 		    <div class="col-sm-offset-3">
-				<input list="equipos" name="equipovisitante" required>
+				<input list="equipos" name="equipovisitante" placeholder="{{equipo2.nombre}}" required>
 				<datalist id="equipos">
 				{{#equipos}}
   					<option value="{{nombre}}">
@@ -74,6 +74,7 @@
 	{{/existe}}
 	{{^existe}}
 		<h2>No se puede editar un partido que no existe</h2>
+		<a href="/torneos" class="btn btn-info col-sm-offset-1 col-sm-2">Volver a torneos</a>
 	{{/existe}}
     </div><!-- /.container -->
 {{/layout}}

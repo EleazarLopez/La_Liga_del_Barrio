@@ -9,7 +9,7 @@
 			  <div class="form-group">
 			    <label for="nombre" class="col-sm-2 control-label">Nombre del equipo: </label>
 			    <div class="col-sm-2">
-			      <input type="text" class="form-control" placeholder="nombre" name="nombre" required/>
+			      <input type="text" class="form-control" placeholder="nombre" name="nombre" id="nombre" required/>
 			    </div>
 			  </div>
 			  
@@ -18,7 +18,7 @@
 			  <div class="form-group">
 			    <label for="nombre" class="col-sm-2 control-label">Email de contacto: </label>
 			    <div class="col-sm-2">
-			      <input type="text" class="form-control" placeholder="correo" name="correo" required/>
+			      <input type="text" class="form-control" placeholder="correo" name="correo" id="correo" required/>
 			    </div>
 			  </div>
 			  
@@ -27,16 +27,15 @@
 			  <div class="form-group">
 			    <label for="nombre" class="col-sm-2 control-label">Teléfono de contacto: </label>
 			    <div class="col-sm-2">
-			      <input type="text" class="form-control" placeholder="telefono" name="telefono" required/>
+			      <input type="text" class="form-control" placeholder="telefono" name="telefono" id="telefono" required/>
 			    </div>
 			  </div>
 			  
 			  <br><br>
 			  
-			  <input type="hidden" name="nombredelegado" value="{{userName}}"/>
-			  
 			  <div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
+			      <input type="hidden" name="delegado" value"{{userName}}"/>
 			      <input type="hidden" name="_csrf" value="{{token}}"/>
 			      <input type="submit" class="btn btn-success" value="Guardar"/>
 			      <a href="/" class="btn btn-danger">Cancelar</a>

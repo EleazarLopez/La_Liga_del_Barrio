@@ -1,17 +1,15 @@
 {{#layout}}
 
     <div class="container theme-showcase">
-       {{#juega}}
-       		<h2>El equipo {{nombre}} está inscrito en algún torneo y no puede ser borrado.</h2>
-       {{/juega}}
-       {{^juega}}
-	   		{{#borrado}}
-	   	 		<h2>El equipo {{nombre}} ha sido borrado correctamente.</h2>
-	    		<a href="/equipos">Volver a equipos</a> 
-	   		{{/borrado}}
-	   		{{^borrado}}
-	   			<h2>El equipo que se intenta borrar no existe.</h2>
-	   		{{/borrado}}
-	   	{{/juega}}
+   		{{#borrado}}
+   	 		<h2>El equipo {{nombre}} ha sido borrado correctamente.</h2>
+    		<a href="/">Volver al inicio</a> 
+   		{{/borrado}}
+   		{{^borrado}}
+   			<h2>No se ha podido borrar el equipo debido a alguna de las siguientes razones:</h2>
+   			<h3> - El usuario no es un usuario registrado.</h3>
+   			<h3> - El usuario no tiene rol de delegado.</h3>
+   			<h3> - El usuario no tiene equipo.</h3>
+   		{{/borrado}}
     </div><!-- /.container -->
 {{/layout}}

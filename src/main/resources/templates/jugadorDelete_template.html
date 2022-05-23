@@ -1,19 +1,22 @@
 {{#layout}}
     
     <div class="container theme-showcase">
-	   {{#existe}}
+	   {{#propietario}}
 	    	{{#borrado}}
 	    		<h2>El jugador "{{jugador.nombre}}", con dorsal "{{jugador.dorsal}}" y DNI "{{jugador.dni}}" ha sido borrado correctamente.</h2>
+	    		<a href="/equipos/editar">Volver a tu equipo</a>
 	   		{{/borrado}}
 	   		{{^borrado}}
-	    		<h2>El jugador "{{jugador.nombre}}", con dorsal "{{jugador.dorsal}}" y DNI "{{jugador.dni}}" no se ha podido borrar.</h2>
+	    		<h2>El jugador no se ha podido borrar porque no existe o porque el usuario no es propietario del equipo donde milita el jugador.</h2>
 	   		{{/borrado}}
 	   		<br>
-			<a href="/equipos/editar/{{equipo.nombre}}">Volver a tu equipo</a>
-	   	{{/existe}}
-	   	{{^existe}}
-	   		<h2>Error. No se puede borrar un jugador que no esté dado de alta en algún equipo.</h2>
-	   	{{/existe}}
+	   	{{/propietario}}
+	   	{{^propietario}}
+	   		<h2>No se puede borrar el jugador por alguna de las siguientes razones:</h2>
+	   		<h3> - El usuario no está logeado.</h3>
+			<h3> - El usuario no es un delegado.</h3>
+			<h3> - El usuario es delegado pero aún no ha creado un equipo.</h3>
+	   	{{/propietario}}
 	   	
     </div><!-- /.container -->
 {{/layout}}

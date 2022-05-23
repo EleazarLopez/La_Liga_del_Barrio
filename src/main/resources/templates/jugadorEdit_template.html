@@ -1,57 +1,65 @@
 {{#layout}}
 		<div class="container theme-showcase">
-		{{#existe}}		
-			<form class="form-horizontal" action="/jugador/editar" method="post">
-			  <div class="form-group">
-			    <label for="nombre" class="col-sm-2 control-label"><h3>Equipo:</h3></label>
-			    <label for="nombre" class="col-sm-1 control-label text-danger"><h3>{{nombrequipo}}<h3></label>
-			  </div>
-			  
-			  <br><br>
-			  
-			  <div class="form-group">
-			    <label for="nombre" class="col-sm-2 control-label">Nombre: </label>
-			    <div class="col-sm-2">
-			     <input type="hidden" name="id" value="{{jugador.id}}"/>
-			     <input type="hidden" name="equipoactual" value="{{nombrequipo}}"/>
-			     <input type="hidden" name="usuario" value="{{userName}}"/>
-			     <input type="text" class="form-control" value="{{jugador.nombre}}" name="nombre" required/>
-			    </div>
-			    
-			  </div>
-			  
-			  <br><br>
-			  
-			  <div class="form-group">
-			    <label for="dorsal" class="col-sm-2 control-label">Dorsal: </label>
-			    <div class="col-sm-2">
-			      <input type="text" class="form-control" value="{{jugador.dorsal}}" name="dorsal" required/>
-			    </div>
-			  </div>
-			  
-			  <br><br>
-			  
-			  <div class="form-group">
-			    <label for="dni" class="col-sm-2 control-label">DNI: </label>
-			    <div class="col-sm-2">
-			      <input type="text" class="form-control" value="{{jugador.dni}}" name="dni" required/>
-			    </div>
-			  </div>
-			  
-			  <br><br>
-			  
-			  <div class="form-group">
-			    <div class="col-sm-offset-2 col-sm-10">
-			      <input type="hidden" name="_csrf" value="{{token}}"/>
-			      <input type="submit" class="btn btn-success" value="Guardar"/>
-			      <a href="/equipos/editar/{{nombrequipo}}" class="btn btn-danger">Cancelar</a>
-			    </div>
-			  </div>
-			  
-			</form>
-		{{/existe}}
-		{{^existe}}
-			<h3>El jugador que se quiere editar no existe.</h3>
-		{{/existe}}
+		{{#propietario}}
+			{{#existe}}		
+				<form class="form-horizontal" action="/jugador/editar" method="post">
+				  <div class="form-group">
+				    <label for="nombre" class="col-sm-2 control-label"><h3>Equipo:</h3></label>
+				    <label for="nombre" class="col-sm-1 control-label text-danger"><h3>{{nombrequipo}}<h3></label>
+				  </div>
+				  
+				  <br><br>
+				  
+				  <div class="form-group">
+				    <label for="nombre" class="col-sm-2 control-label">Nombre: </label>
+				    <div class="col-sm-2">
+				     <input type="hidden" name="id" value="{{jugador.id}}"/>
+				     <input type="hidden" name="dniactual" value="{{jugador.dni}}"/>
+				     <input type="text" class="form-control" value="{{jugador.nombre}}" name="nombre" required/>
+				    </div>
+				    
+				  </div>
+				  
+				  <br><br>
+				  
+				  <div class="form-group">
+				    <label for="dorsal" class="col-sm-2 control-label">Dorsal: </label>
+				    <div class="col-sm-2">
+				      <input type="text" class="form-control" value="{{jugador.dorsal}}" name="dorsal" required/>
+				    </div>
+				  </div>
+				  
+				  <br><br>
+				  
+				  <div class="form-group">
+				    <label for="dni" class="col-sm-2 control-label">DNI: </label>
+				    <div class="col-sm-2">
+				      <input type="text" class="form-control" value="{{jugador.dni}}" name="dni" required/>
+				    </div>
+				  </div>
+				  
+				  <br><br>
+				  
+				  <div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <input type="hidden" name="_csrf" value="{{token}}"/>
+				      <input type="submit" class="btn btn-success" value="Guardar"/>
+				      <a href="/equipos/editar" class="btn btn-danger">Cancelar</a>
+				    </div>
+				  </div>
+				  
+				</form>
+			{{/existe}}
+			{{^existe}}
+				<h3>El jugador que se quiere editar no existe o no milita actualmente en tu equipo.</h3>
+				<a href="/equipos/editar">Volver a tu equipo</a>
+			{{/existe}}
+		{{/propietario}}
+		{{^propietario}}
+			<h2>No se puede editar el jugador por alguna de las siguientes razones:</h2>
+	   		<h3> - El usuario no está logeado.</h3>
+			<h3> - El usuario no es un delegado.</h3>
+			<h3> - El usuario es delegado pero aún no ha creado un equipo.</h3>
+		{{/propietario}}
 	    </div><!-- /.container -->
 {{/layout}}

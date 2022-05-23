@@ -58,36 +58,30 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		
 		// Páginas privadas
 		http.authorizeRequests().antMatchers("/torneos/nuevo").hasAnyRole("ADMIN");
-		http.authorizeRequests().antMatchers("/torneos/delete").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/torneos/delete/*").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/torneos/editar").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/torneos/editar/*").hasAnyRole("ADMIN");
 		
-		http.authorizeRequests().antMatchers("/equipo/nuevo").hasAnyRole("ADMIN","DELEGADO");
-		http.authorizeRequests().antMatchers("/equipo/nuevo/*").hasAnyRole("ADMIN","DELEGADO");
-		http.authorizeRequests().antMatchers("/equipos/editar/*").hasAnyRole("ADMIN","DELEGADO");
-		http.authorizeRequests().antMatchers("/equipos/editar").hasAnyRole("ADMIN","DELEGADO");
-		http.authorizeRequests().antMatchers("/equipos/delete").hasAnyRole("ADMIN");
-		http.authorizeRequests().antMatchers("/equipos/delete/*").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers("/equipo/nuevo").hasAnyRole("DELEGADO");
+		http.authorizeRequests().antMatchers("/equipos/editar").hasAnyRole("DELEGADO");
+		http.authorizeRequests().antMatchers("/equipos/delete").hasAnyRole("DELEGADO");
 		
-		http.authorizeRequests().antMatchers("/jugador/nuevo").hasAnyRole("ADMIN","DELEGADO");
-		http.authorizeRequests().antMatchers("/jugador/nuevo/*").hasAnyRole("ADMIN","DELEGADO");
-		http.authorizeRequests().antMatchers("/jugador/delete").hasAnyRole("ADMIN","DELEGADO");
-		http.authorizeRequests().antMatchers("/jugador/delete/*").hasAnyRole("ADMIN","DELEGADO");
-		http.authorizeRequests().antMatchers("/jugador/editar").hasAnyRole("ADMIN","DELEGADO");
-		http.authorizeRequests().antMatchers("/jugador/editar/*").hasAnyRole("ADMIN","DELEGADO");
+		http.authorizeRequests().antMatchers("/jugador/nuevo").hasAnyRole("DELEGADO");
+		http.authorizeRequests().antMatchers("/jugador/delete").hasAnyRole("DELEGADO");
+		http.authorizeRequests().antMatchers("/jugador/delete/*").hasAnyRole("DELEGADO");
+		http.authorizeRequests().antMatchers("/jugador/editar").hasAnyRole("DELEGADO");
+		http.authorizeRequests().antMatchers("/jugador/editar/*").hasAnyRole("DELEGADO");
 		
 		http.authorizeRequests().antMatchers("/partido/nuevo").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/partido/nuevo/*").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/partido/editar").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/partido/editar/*").hasAnyRole("ADMIN");
-		http.authorizeRequests().antMatchers("/partidos/delete").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/partidos/delete/*").hasAnyRole("ADMIN");
 		
 		http.authorizeRequests().antMatchers("/cuentas").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/cuentas/eliminar/*").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/cuentas/rolup/*").hasAnyRole("ADMIN");
-		http.authorizeRequests().antMatchers("/cuenta/*").hasAnyRole("ADMIN","USUARIO","DELEGADO");
+		http.authorizeRequests().antMatchers("/cuenta").hasAnyRole("ADMIN","USUARIO","DELEGADO");
 		http.authorizeRequests().antMatchers("/cuenta/save").hasAnyRole("ADMIN","USUARIO","DELEGADO");
 		
 	}

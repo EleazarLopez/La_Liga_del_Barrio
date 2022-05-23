@@ -5,8 +5,7 @@
 			
 			  <div class="form-group">
 			    <label for="nombre" class="col-sm-4 control-label"><h3>Nuevo jugador para el equipo</h3></label>
-			    <label for="nombre" class="col-sm-1 control-label text-danger"><h3>{{nombre}}</h3></label>
-			    <input type="hidden" name="nombredeequipo" value="{{nombre}}"/>
+			    <label for="nombre" class="col-sm-1 control-label text-danger"><h3>{{equipo.nombre}}</h3></label>
 			  </div>
 			  
 			  <br><br>
@@ -43,14 +42,17 @@
 			    <div class="col-sm-offset-2 col-sm-10">
 			      <input type="hidden" name="_csrf" value="{{token}}"/>
 			      <input type="submit" class="btn btn-success" value="Guardar"/>
-			      <a href="/equipos/editar/{{nombre}}" class="btn btn-danger">Cancelar</a>
+			      <a href="/equipos/editar" class="btn btn-danger">Cancelar</a>
 			    </div>
 			  </div>
 			  
 			</form>
 		{{/existe}}
 		{{^existe}}
-			<h3>No se puede crear un jugador para un equipo que no existe.</h3>
+			<h2>No se puede crear un jugador debido a alguna de las siguientes razones:</h2>
+			<h3> - El usuario no está logeado.</h3>
+			<h3> - El usuario no es un delegado.</h3>
+			<h3> - El usuario es delegado pero aún no ha creado un equipo.</h3>
 		{{/existe}}
 	    </div><!-- /.container -->
 {{/layout}}
