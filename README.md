@@ -9,7 +9,7 @@ Web dedicada a la gestión y consulta de una liga de fútbol
 
 2 - Situarse en la carpeta descargada:
 
-   > cd La_Liga_Del_Barrio/
+   > cd La_Liga_del_Barrio/
 
 3 - Crear la imagen de la aplicación: 
 
