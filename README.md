@@ -22,6 +22,7 @@ Web dedicada a la gestión y consulta de una liga de fútbol
 
 La configuracio de haproxy lleva cookie de sesion con roundrobin (se ve el balanceo al cambiar de navegador).
 La base de datos tiene persistencia de datos en host a traves de un volumen.
+Nota: si los nodos de aplicación fallan al arrancar es porque el contenedor de base de datos aún no está disponible para recibir peticiones. Basta con arrancarlos otra vez desde el docker desktop o con docker start.
 
 ## Instrucciones de despliegue
 Descargar los ficheros en zip, descomprimir e importar a Eclipse como proyecto. El archivo XML contiene todas las dependencias necesarias. Versión java 1.8.
