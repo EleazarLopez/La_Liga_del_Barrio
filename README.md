@@ -3,15 +3,13 @@
 Web dedicada a la gestión y consulta de una liga de fútbol
 
 ## Instrucciones de despliegue en DOCKER
-1 - En ubuntu, crear una carpeta y situarse en ella:
-
-   > mkdir LaLigaDelbarrio
-
-   > cd LaLigaDelBarrio
-
-2 - Descargar este repositorio:
+1 - Descargar este repositorio:
 
    > git clone https://github.com/EleazarLopez/La_Liga_del_Barrio
+
+2 - Situarse en la carpeta descargada:
+
+   > cd La_Liga_Del_Barrio/
 
 3 - Crear la imagen de la aplicación: 
 
