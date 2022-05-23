@@ -4,10 +4,16 @@ Web dedicada a la gestión y consulta de una liga de fútbol
 
 ## Instrucciones de despliegue en DOCKER
 1 - En ubuntu, crear una carpeta. Por ejemplo, "mkdir LaLigaDelBarrio".
+
 2 - Descargar este repositorio con "git clone https://github.com/EleazarLopez/La_Liga_del_Barrio"
+
 3 - Crear la imagen de la aplicación: 
+
    > docker build -f laligadelbarrioapp.Dockerfile --no-cache -t eleazarls64/laligadelbarrioapp .
+
+
 5 Crear y arrancar la infraestructura: 
+
    > docker compose up
 
 La configuracio de haproxy lleva cookie de sesion con roundrobin (se ve el balanceo al cambiar de navegador).
